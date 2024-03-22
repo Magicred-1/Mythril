@@ -2,7 +2,9 @@ import Image from "next/image";
 import React from "react";
 import logo from "@/lib/assets/logos/navbar/Logo.png";
 import { Button } from "./ui/button";
-import { lexend } from "@/app/layout";
+import { Lexend } from "next/font/google";
+
+export const lexend = Lexend({ subsets: ["latin"] });
 
 const Navbar = () => {
   return (

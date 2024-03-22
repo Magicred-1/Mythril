@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import boulImg from "@/lib/assets/logos/landingPage/3d_model_hero.png";
-import { lexend } from "@/app/layout";
+import { Lexend } from "next/font/google";
+
+export const lexend = Lexend({ subsets: ["latin"] });
 
 const Stat = ({ stat, description }: { stat: string; description: string }) => {
   return (
