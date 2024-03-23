@@ -26,7 +26,7 @@ const etherLinkNetwork = [
     name: 'Etherlink Testnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'XTZ',
+      name: 'Tezos',
       symbol: 'XTZ',
     },
     networkId: 128123,
@@ -39,19 +39,22 @@ const queryClient = new QueryClient();
 
 const environmentId = process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || "7c2d8840-84cd-41ea-a446-e9030fd029a9";
 
-export const DynamicProvider = ({ children }) => {
+export const DynamicProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
     <DynamicContextProvider
           settings={{
-            overrides: {
-                etherLinkNetwork
-            },
             environmentId,
             walletConnectors: [
               EthereumWalletConnectors,
               ZeroDevSmartWalletConnectors,
             ],
-
+            overrides: {
+              etherLinkNetwork
+            },
           }}
         >
           <WagmiProvider config={config}>
