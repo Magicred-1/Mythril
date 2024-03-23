@@ -193,6 +193,11 @@ contract Mythril is IMythril, Ownable {
             "Caller is not the insurance provider of this offer"
         );
 
+        require(
+            subscription.lastPayment > block.timestamp,
+            "Subscriber has not paid this month"
+        );
+
         bool payBackProcessed = IERC20(tokenPayBack).transferFrom(
             msg.sender,
             subscription.subscriber,
