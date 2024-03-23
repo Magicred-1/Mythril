@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
+import { DynamicProvider } from "@/lib/dynamic.provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <Separator />
-        {children}
+        <DynamicProvider>
+          <Navbar />
+            <Separator />
+            {children}
+        </DynamicProvider>
         <Footer />
       </body>
     </html>
