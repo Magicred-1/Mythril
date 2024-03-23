@@ -1,4 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+"use server";
+
+import type { NextApiRequest } from 'next'
+import { NextResponse } from 'next/server'
 
 import {
   createWalletClient,
@@ -14,7 +17,7 @@ const walletClient = createWalletClient({
   transport: custom("https://node.ghostnet.etherlink.com" as any),
 })
  
-export async function POST(
+async function POST(
   req: NextApiRequest,
 ) {
   const { user } = req.body
@@ -26,8 +29,12 @@ export async function POST(
   const hash = await walletClient.sendTransaction({
     account,
     to: walletAddress,
-    value: 1000000000000000000n
+    value: 1000000000000000000 as any,
   })
 
-  return hash;
+  return new Response(JSON.stringify({ hash }), {
+    status: 200,
+  })
 }
+
+export { POST }
