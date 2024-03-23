@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a href="https://www.mythril.finance"><img src ="./public/Banner_Mythril.png" alt="Mythril" width="100%"/></a>
 
-## Getting Started
+# [Mythril](https://www.mythril.finance/) - Making Insurance Subscription Easier!
+## Powered by <img src="https://www.etherlink.com/_next/image?url=%2Fimg%2Fhome%2Flogo.png&w=256&q=75" alt="Etherlink Logo" width="35"/> Etherlink & <img src="https://cryptologos.cc/logos/tezos-xtz-logo.png" alt="Tezos Logo" width="35"> Tezos.
 
-First, run the development server:
+At Mythril, we are building the future of **Insurance** by providing trust layer solution for users to subscribe to their favorite insurance based on their needs.
+
+## Features
+
+- **Decentralized**: Mythril is a decentralized platform, which means that the users have full control over their funds and insurance subscriptions.
+
+- **UX Friendly**: Mythril is a user-friendly platform, which means that the users can easily navigate through the platform and subscribe to your favorite insurance.
+
+- **Compliant**: Mythril is a compliant platform, which means all our users are verified and have passed the KYC process to ensure the safety of the platform and full compliance with the regulations in place.
+
+- **Adaptive**: Mythril is a platform that adapts to the user's needs, which means that the users can easily subscribe to their favorite insurance.
+
+- **On Ramp / Off Ramp**: Mythril is a platform that allows users to easily convert their fiat currency to crypto and vice versa.
+
+# Preview
+
+The app is deployed on Vercel and can be accessed at [https://www.mythril.finance/](https://www.mythril.finance/)
+
+## Getting started
+
+Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy `.env.example` to `.env.local` and set the environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To get a Dynamic.xyz API key, visit [Dynamic.xyz](https://dynamic.xyz/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Deployed Contracts
 
-## Learn More
+| CONTRACTS              | ADDRESSES                                  |
+|------------------------|--------------------------------------------|
+| X | x |
+| x | x |
+| x | x |
+| x | x |
+| x | x |
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Wagmi] (https://wagmi.io/)
+- [Dynamic.xyz](https://dynamic.xyz/)
+- [Tezos](https://tezos.com/)
+- [Etherlink](https://etherlink.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Authors
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Magicred-1](https://github.com/Magicred-1/)
+- [Marco75116](https://github.com/Marco75116)
+- [Kai](https://github.com/Marco75116)
