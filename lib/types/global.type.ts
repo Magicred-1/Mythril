@@ -6,3 +6,12 @@ export type Assurance = {
   img: StaticImageData;
   country: string;
 };
+
+export type ActiveSubscription = {
+  name: string;
+  logo: StaticImageData;
+  subscriptionDate: string;
+  expiredDate: string;
+  payedPrice: number;
+  lastPayment: string;
+};
