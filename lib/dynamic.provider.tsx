@@ -2,7 +2,7 @@
 
 import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
-import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
+// import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, WagmiProvider } from "wagmi";
@@ -17,7 +17,7 @@ const config = createConfig({
     },
 });
 
-const etherLinkNetwork = [
+const evmNetworks = [
   {
     blockExplorerUrls: ['https://testnet-explorer.etherlink.com'],
     chainId: 128123,
@@ -50,10 +50,10 @@ export const DynamicProvider = ({
             environmentId,
             walletConnectors: [
               EthereumWalletConnectors,
-              ZeroDevSmartWalletConnectors,
+              // ZeroDevSmartWalletConnectors,
             ],
             overrides: {
-              etherLinkNetwork
+              evmNetworks
             },
           }}
         >
