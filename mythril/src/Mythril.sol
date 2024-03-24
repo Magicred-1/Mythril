@@ -14,10 +14,11 @@ contract Mythril is IMythril, Ownable {
     using EnumerableSet for EnumerableSet.AddressSet;
     using Math for uint256;
 
-    uint256 public NONCE_INSURANCES = 0; // incremental offer nonce counter, this is the unique ID for the next insurance offer
+    uint256 public NONCE_OFFERSINSURANCES = 0; // incremental offer nonce counter, this is the unique ID for the next insurance offer
     uint256 public NONCE_SUBSCRIPTIONS = 0; // incremental subscription nonce counter, this is the unique ID for the next subscription
 
     EnumerableSet.AddressSet private insurances;
+    EnumerableSet.AddressSet private subscribers;
     mapping(address insurance => MythrilData.InsuranceData) insuranceData;
     mapping(address insurance => EnumerableSet.UintSet)
         private INSURANCE_OFFERS;
@@ -25,7 +26,6 @@ contract Mythril is IMythril, Ownable {
         private SUBSCRIBER_SUBSCRIPTIONS;
     mapping(uint256 idOffer => EnumerableSet.AddressSet)
         private OFFER_SUBSCRIBERS;
-    mapping(address subscriber => MythrilData.SubscriberData) subscribers;
     mapping(uint256 idOffer => MythrilData.InsuranceOfferData) insuranceOffers;
     mapping(uint256 idSubscription => MythrilData.Subscription) subscriptions;
 
@@ -50,19 +50,19 @@ contract Mythril is IMythril, Ownable {
         uint256 ratio = getRatio(country);
         newOffer.ratio = ratio;
 
-        insuranceOffers[NONCE_INSURANCES] = newOffer;
-        INSURANCE_OFFERS[msg.sender].add(NONCE_INSURANCES);
+        insuranceOffers[NONCE_OFFERSINSURANCES] = newOffer;
+        INSURANCE_OFFERS[msg.sender].add(NONCE_OFFERSINSURANCES);
 
-        NONCE_INSURANCES++;
+        NONCE_OFFERSINSURANCES++;
     }
 
     function subscribe(uint256 offerId) external {
         require(
-            subscribers[msg.sender].isWhitelisted,
+            subscribers.contains(msg.sender),
             "Subscriber is not whitelisted"
         );
 
-        require(offerId < NONCE_INSURANCES, "Offer does not exist");
+        require(offerId < NONCE_OFFERSINSURANCES, "Offer does not exist");
 
         MythrilData.InsuranceOfferData storage offer = insuranceOffers[offerId];
         require(
@@ -103,7 +103,7 @@ contract Mythril is IMythril, Ownable {
     }
 
     function withdrawFunds(uint256 offerId, uint256 amount) external {
-        require(offerId < NONCE_INSURANCES, "Offer does not exist");
+        require(offerId < NONCE_OFFERSINSURANCES, "Offer does not exist");
         require(
             INSURANCE_OFFERS[msg.sender].contains(offerId),
             "insurance caller is the owner of this offer"
@@ -222,7 +222,7 @@ contract Mythril is IMythril, Ownable {
     /* -------------------------- SETTER FUNCTION ------------------------- */
 
     function whitelistSubscriber(address subscriber) external onlyOwner {
-        subscribers[subscriber].isWhitelisted = true;
+        subscribers.add(subscriber);
     }
 
     function addInsurance(
@@ -237,5 +237,65 @@ contract Mythril is IMythril, Ownable {
 
     function isInsurance(address assurance) external view returns (bool) {
         return insurances.contains(assurance);
+    }
+
+    function isWhitelisted(address subscriber) external view returns (bool) {
+        return subscribers.contains(subscriber);
+    }
+
+    function getOffersLength() external view returns (uint256) {
+        return NONCE_OFFERSINSURANCES;
+    }
+
+    function getSubscriptionsLength() external view returns (uint256) {
+        return NONCE_SUBSCRIPTIONS;
+    }
+
+    function getInsuranceDetails(
+        address insurance
+    ) external view returns (MythrilData.InsuranceData memory) {
+        require(insurances.contains(insurance), "Insurance does not exist");
+        return insuranceData[insurance];
+    }
+
+    function getOfferDetails(
+        uint256 offerId
+    )
+        external
+        view
+        returns (MythrilData.InsuranceOfferData memory offerDetails)
+    {
+        require(offerId < NONCE_OFFERSINSURANCES, "Offer does not exist");
+        offerDetails = insuranceOffers[offerId];
+    }
+
+    function getSubscriptionDetails(
+        uint256 subscriptionId
+    ) external view returns (MythrilData.Subscription memory) {
+        require(
+            subscriptionId < NONCE_SUBSCRIPTIONS,
+            "Subscription does not exist"
+        );
+        return subscriptions[subscriptionId];
+    }
+
+    function getSubscriptionsForSubscriber(
+        address subscriber
+    ) external view returns (uint256[] memory) {
+        require(
+            subscribers.contains(subscriber),
+            "Subscriber is not whitelisted"
+        );
+        uint256[] memory subscriptionIds = new uint256[](
+            SUBSCRIBER_SUBSCRIPTIONS[subscriber].length()
+        );
+        for (
+            uint256 i = 0;
+            i < SUBSCRIBER_SUBSCRIPTIONS[subscriber].length();
+            i++
+        ) {
+            subscriptionIds[i] = SUBSCRIBER_SUBSCRIPTIONS[subscriber].at(i);
+        }
+        return subscriptionIds;
     }
 }
