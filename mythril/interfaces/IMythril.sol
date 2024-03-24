@@ -3,6 +3,8 @@ pragma solidity ^0.8.13;
 import {MythrilData} from "../lib/MyrhrilData.sol";
 
 interface IMythril {
+    /* -------------------- EXTERNAL FNS -------------------------*/
+
     function whitelistSubscriber(address subscriber) external;
 
     function createOffer(
@@ -24,4 +26,36 @@ interface IMythril {
         address tokenPayBack,
         uint256 amount
     ) external;
+
+    /* -------------------- EVENTS -------------------------*/
+
+    event SubscriberWhitelisted(address indexed subscriber);
+
+    event OfferCreated(
+        uint256 indexed offerId,
+        address indexed insurance,
+        MythrilData.InsuranceOfferData offerDetails
+    );
+    event InsuranceAdded(address indexed insurance, string country);
+
+    event FundsWithdrawn(uint256 indexed offerId, uint256 amount);
+
+    event SubscriptionMade(
+        uint256 indexed subscriptionId,
+        address indexed subscriber,
+        MythrilData.Subscription newSubscription
+    );
+
+    event MonthlySubscriptionPaid(
+        uint256 indexed subscriptionId,
+        uint256 amount
+    );
+
+    event SubscriptionRevoked(uint256 indexed subscriptionId);
+
+    event PaybackProcessed(
+        uint256 indexed subscriptionId,
+        address tokenPayBack,
+        uint256 amount
+    );
 }

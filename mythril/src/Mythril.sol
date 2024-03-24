@@ -54,6 +54,8 @@ contract Mythril is IMythril, Ownable {
         INSURANCE_OFFERS[msg.sender].add(NONCE_OFFERSINSURANCES);
 
         NONCE_OFFERSINSURANCES++;
+
+        emit OfferCreated(NONCE_OFFERSINSURANCES - 1, msg.sender, newOffer);
     }
 
     function subscribe(uint256 offerId) external {
@@ -100,6 +102,12 @@ contract Mythril is IMythril, Ownable {
 
         SUBSCRIBER_SUBSCRIPTIONS[msg.sender].add(NONCE_SUBSCRIPTIONS);
         NONCE_SUBSCRIPTIONS++;
+
+        emit SubscriptionMade(
+            NONCE_SUBSCRIPTIONS - 1,
+            msg.sender,
+            newSubscription
+        );
     }
 
     function withdrawFunds(uint256 offerId, uint256 amount) external {
@@ -124,6 +132,8 @@ contract Mythril is IMythril, Ownable {
         require(sent, "Failed to withdraw funds");
 
         offer.balance -= amount;
+
+        emit FundsWithdrawn(offerId, amount);
     }
 
     function paymentMonthlySubscription(uint256 subscriptionId) external {
@@ -150,6 +160,8 @@ contract Mythril is IMythril, Ownable {
         require(paymentProcessed, "Payment failed");
 
         subscription.lastPayment += Constants.secondsInMonth;
+
+        emit MonthlySubscriptionPaid(subscriptionId, offer.priceAmount);
     }
 
     function revokeSubscription(uint256 subscriptionId) external {
@@ -172,6 +184,8 @@ contract Mythril is IMythril, Ownable {
         );
 
         OFFER_SUBSCRIBERS[subscriptionId].remove(subscription.subscriber);
+
+        emit SubscriptionRevoked(subscriptionId);
     }
 
     function insurancePayback(
@@ -204,6 +218,8 @@ contract Mythril is IMythril, Ownable {
             amount
         );
         require(payBackProcessed, "Token transfer failed");
+
+        emit PaybackProcessed(subscriptionId, tokenPayBack, amount);
     }
 
     /* ------------------------- INTERNAL FUNCTION ------------------------- */
@@ -223,6 +239,8 @@ contract Mythril is IMythril, Ownable {
 
     function whitelistSubscriber(address subscriber) external onlyOwner {
         subscribers.add(subscriber);
+
+        emit SubscriberWhitelisted(subscriber);
     }
 
     function addInsurance(
@@ -231,6 +249,8 @@ contract Mythril is IMythril, Ownable {
     ) external onlyOwner {
         insurances.add(insurance);
         insuranceData[insurance].country = country;
+
+        emit InsuranceAdded(insurance, country);
     }
 
     /* -------------------------- GETTER FUNCTION ------------------------- */
