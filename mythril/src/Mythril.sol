@@ -2,6 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Ownable} from "../lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import {ReentrancyGuard} from "../lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
 import {IERC20} from "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import {EnumerableSet} from "../lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol";
 import {IMythril} from "../interfaces/IMythril.sol";
@@ -9,7 +10,7 @@ import {MythrilData} from "../lib/MyrhrilData.sol";
 import {Math} from "../lib/openzeppelin-contracts/contracts/utils/math/Math.sol";
 import {Constants} from "../lib/Constants.sol";
 
-contract Mythril is IMythril, Ownable {
+contract Mythril is IMythril, Ownable, ReentrancyGuard {
     using EnumerableSet for EnumerableSet.UintSet;
     using EnumerableSet for EnumerableSet.AddressSet;
     using Math for uint256;
@@ -58,7 +59,7 @@ contract Mythril is IMythril, Ownable {
         emit OfferCreated(NONCE_OFFERSINSURANCES - 1, msg.sender, newOffer);
     }
 
-    function subscribe(uint256 offerId) external {
+    function subscribe(uint256 offerId) external nonReentrant {
         require(
             subscribers.contains(msg.sender),
             "Subscriber is not whitelisted"
@@ -110,7 +111,10 @@ contract Mythril is IMythril, Ownable {
         );
     }
 
-    function withdrawFunds(uint256 offerId, uint256 amount) external {
+    function withdrawFunds(
+        uint256 offerId,
+        uint256 amount
+    ) external nonReentrant {
         require(offerId < NONCE_OFFERSINSURANCES, "Offer does not exist");
         require(
             INSURANCE_OFFERS[msg.sender].contains(offerId),
@@ -136,7 +140,9 @@ contract Mythril is IMythril, Ownable {
         emit FundsWithdrawn(offerId, amount);
     }
 
-    function paymentMonthlySubscription(uint256 subscriptionId) external {
+    function paymentMonthlySubscription(
+        uint256 subscriptionId
+    ) external nonReentrant {
         require(
             subscriptionId < NONCE_SUBSCRIPTIONS,
             "Subscription does not exist"
@@ -192,7 +198,7 @@ contract Mythril is IMythril, Ownable {
         uint256 subscriptionId,
         address tokenPayBack,
         uint256 amount
-    ) external {
+    ) external nonReentrant {
         require(
             subscriptionId < NONCE_SUBSCRIPTIONS,
             "Subscription does not exist"
@@ -208,7 +214,8 @@ contract Mythril is IMythril, Ownable {
         );
 
         require(
-            subscription.lastPayment > block.timestamp,
+            subscription.lastPayment + Constants.secondsInMonth >
+                block.timestamp,
             "Subscriber has not paid this month"
         );
 
