@@ -8,6 +8,7 @@ import { ActiveSubscription } from "@/lib/types/global.type";
 import imgMutuelleEtudiante from "@/lib/assets/logos/insuraces/mutuelleEtudiante.png";
 import imgSwissCare from "@/lib/assets/logos/insuraces/swissCare.png";
 import imgSaintAntoine from "@/lib/assets/logos/insuraces/saintchristophe.png";
+import KycButton from "@/components/kycButton";
 
 const activeSubcriptions: ActiveSubscription[] = [
   {
@@ -65,7 +66,7 @@ const page = () => {
             <Button className="  px-[25px] rounded-full bg-textBlue font-light text-[20px] gap-2">
               10$ eUSD
             </Button>
-            <Badge variant={"secondary"}>0x8A90ca...36fD7</Badge>
+            <Badge variant={"secondary"}>0x98cEA...e2E84e</Badge>
           </div>
         </div>
         <div className="font-bold text-[50px] text-[#2D8CF0E5] center">
@@ -78,9 +79,7 @@ const page = () => {
             </Button>
           </div>
           <div>
-            <Button className="min-w-[153px]  px-[25px] rounded-full bg-textBlue font-light text-[20px] gap-2">
-              <BadgeCheck /> KYC
-            </Button>
+            <KycButton />
           </div>
         </div>
       </div>
