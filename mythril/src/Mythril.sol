@@ -165,6 +165,8 @@ contract Mythril is IMythril, Ownable, ReentrancyGuard {
         );
         require(paymentProcessed, "Payment failed");
 
+        offer.balance += offer.priceAmount;
+        offer.depositedAmount += offer.priceAmount;
         subscription.lastPayment += Constants.secondsInMonth;
 
         emit MonthlySubscriptionPaid(subscriptionId, offer.priceAmount);
