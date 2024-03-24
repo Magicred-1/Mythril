@@ -23,6 +23,9 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.69)(react@18.2.0)
+  '@sumsub/websdk':
+    specifier: ^2.2.1
+    version: 2.2.1
   '@tanstack/react-query':
     specifier: ^5.28.6
     version: 5.28.6(react@18.2.0)
@@ -57,8 +60,11 @@ dependencies:
     specifier: 2.x
     version: 2.8.18(typescript@5.4.3)
   wagmi:
-    specifier: ^2.5.12
+    specifier: ^2.5.7
     version: 2.5.12(@tanstack/react-query@5.28.6)(@types/react@18.2.69)(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)(typescript@5.4.3)(viem@2.8.18)
+  zustand:
+    specifier: ^4.5.2
+    version: 4.5.2(@types/react@18.2.69)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -4150,6 +4156,10 @@ packages:
       '@stablelib/keyagreement': 1.0.1
       '@stablelib/random': 1.0.2
       '@stablelib/wipe': 1.0.1
+    dev: false
+
+  /@sumsub/websdk@2.2.1:
+    resolution: {integrity: sha512-vkWt1CjxCo99NvzGfxpyEhU/xt0gBXNkOQYbCFyUW+XZU9Pcz8RaWB7UaAYchMYb73PIQztm8Y4+Utf1ekb8Fg==}
     dev: false
 
   /@swc/helpers@0.5.2:
@@ -11627,6 +11637,26 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8'
       immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.69
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /zustand@4.5.2(@types/react@18.2.69)(react@18.2.0):
+    resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
       react: '>=16.8'
     peerDependenciesMeta:
       '@types/react':
