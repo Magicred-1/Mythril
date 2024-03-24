@@ -33,15 +33,12 @@ Copy `.env.example` to `.env.local` and set the environment variables
 
 To get a Dynamic.xyz API key, visit [Dynamic.xyz](https://dynamic.xyz/)
 
-## Deployed Contracts
+## Deployed Contracts on Etherlink Testnet
 
 | CONTRACTS              | ADDRESSES                                  |
 |------------------------|--------------------------------------------|
-| X | x |
-| x | x |
-| x | x |
-| x | x |
-| x | x |
+| Mythril Contract | 0x6aC1C63824991EE50DD41C17F2bb0d111D9fcec1 |
+| Mockup eUSD | 0x7D284e662fb14327A7a4e37b7399484f57d523D6 |
 
 ## Stack
 
