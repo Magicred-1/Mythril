@@ -1,6 +1,9 @@
 <a href="https://www.mythril.finance"><img src ="./public/Banner_Mythril.png" alt="Mythril" width="100%"/></a>
 
 # [Mythril](https://www.mythril.finance/) - Making Insurance Subscription Easier!
+
+# 🏆 Finalist - H-W3B Paris Qualifier 2024 on the 24th of March in Paris. (Djason Gadiou / Marc-Antoine Ouradour / Antoine Piumi)
+
 ## Powered by <img src="https://www.etherlink.com/_next/image?url=%2Fimg%2Fhome%2Flogo.png&w=256&q=75" alt="Etherlink Logo" width="35"/> Etherlink & <img src="https://cryptologos.cc/logos/tezos-xtz-logo.png" alt="Tezos Logo" width="35"> Tezos.
 
 At Mythril, we are building the future of **Insurance** by providing trust layer solution for users to subscribe to their favorite insurance based on their needs.
