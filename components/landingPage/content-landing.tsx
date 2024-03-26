@@ -8,85 +8,89 @@ import { ArrowRight } from "lucide-react";
 
 const ContentLanding = () => {
   return (
-    <div className="bg-backfum">
-      <div className="center flex flex-row">
-        <div className="space-y-4">
-          <div className=" text-[40px] font-bold leading-tight">
+    <div className="bg-backfum p-6 sm:p-12 lg:p-24">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
+        <div className="md:w-1/2">
+          <div className="text-3xl md:text-5xl font-bold leading-tight">
             We bring <br />{" "}
-            <span className="text-textBlue font-light ">Trust</span>
+            <span className="text-textBlue font-light">Trust</span>
           </div>
-          <div className=" max-w-[418px] leading-[1.2]">
+          <div className="max-w-md md:max-w-lg leading-relaxed mt-4 md:mt-6">
             We provide reliable, robust, and secure protection services to
-            actual and futures insured users,mechanism to insure that the
+            actual and futures insured users, mechanism to insure that the
             insurance company you are going for has everything in order to cover
             you.
           </div>
-          <div>
-            <div className=" font-normal text-[19px]">
+          <div className="mt-4 md:mt-6">
+            <div className="font-normal text-lg md:text-xl">
               <span className="text-textBlue">➔</span> Proof-of-Reserve
             </div>
-            <div className=" font-normal text-[19px]">
+            <div className="font-normal text-lg md:text-xl">
               <span className="text-textBlue">➔</span> Transparent payments
               using the Blockchain
             </div>
-            <div className=" font-normal text-[19px]">
+            <div className="font-normal text-lg md:text-xl">
               <span className="text-textBlue">➔</span> Self Custodial
             </div>
           </div>
           <Button
             variant={"outline"}
-            className=" font-light text-[19px] rounded-full gap-2 bg-backfum"
+            className="font-light text-lg md:text-xl rounded-full gap-2 bg-backfum mt-6"
           >
             Get Covered <ArrowRight />
           </Button>
         </div>
-        <div>
+        <div className="md:w-1/2 mt-6 md:mt-0">
           <Image src={firstImg} alt="boulimg" />
         </div>
       </div>
 
-      <div className="center flex flex-row">
-        <Image src={SecondtImg} alt="boulimg" />
-        <div className="space-y-5">
-          <div className=" text-[40px] font-bold mb-8 ">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
+        <div className="md:w-1/2 mt-6 md:mt-0">
+          <Image src={SecondtImg} alt="boulimg" />
+        </div>
+        <div className="md:w-1/2">
+          <div className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
             Everything <br />{" "}
-            <div className="text-textBlue font-light leading-none">
+            <span className="text-textBlue font-light leading-none">
               Transparent and <br /> Compliant
-            </div>
+            </span>
           </div>
-          <div className=" max-w-[411px] leading-[1.2]">
-            We make sure that every transactions goes where it should be and we
-            prevent the fraud by applying a mandatory KYC for each user.
+          <div className="max-w-md md:max-w-lg leading-relaxed">
+            We make sure that every transaction goes where it should be and we
+            prevent fraud by applying mandatory KYC for each user.
           </div>
 
           <Button
             variant={"outline"}
-            className=" font-light text-[19px] rounded-full gap-2 bg-backfum"
+            className="font-light text-lg md:text-xl rounded-full gap-2 bg-backfum mt-6"
           >
             Get Started <ArrowRight />
           </Button>
         </div>
       </div>
 
-      <div className="center flex flex-row">
-        <div className="space-y-5">
-          <div className=" text-[40px] font-bold mb-8 ">
+      <div className="flex flex-col md:flex-row md:items-center justify-between">
+        <div className="md:w-1/2">
+          <div className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
             Your keys your <br />{" "}
-            <div className="text-textBlue font-light leading-none">Funds</div>
+            <span className="text-textBlue font-light leading-none">Funds</span>
           </div>
-          <div className=" max-w-[411px] leading-[1.2]">
-            We offer a instant transfer non-custodial service where your have
-            fully access to your wallet and thus we don’t have access to it.
+          <div className="max-w-md md:max-w-lg leading-relaxed">
+            We offer an instant transfer non-custodial service where you have
+            full access to your wallet and thus we don’t have access to it.
           </div>
 
           <Button
             variant={"outline"}
-            className=" font-light text-[19px] rounded-full gap-2 bg-backfum"
+            className="font-light text-lg md:text-xl rounded-full gap-2 bg-backfum mt-6"
           >
             Get Secured <ArrowRight />
           </Button>
         </div>
-        <Image src={thirdImg} alt="boulimg" />
+        <div className="md:w-1/2 mt-6 md:mt-0">
+          <Image src={thirdImg} alt="boulimg" />
+        </div>
       </div>
     </div>
   );
