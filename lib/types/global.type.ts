@@ -14,4 +14,5 @@ export type ActiveSubscription = {
   expiredDate: string;
   payedPrice: number;
   lastPayment: string;
+  expired: boolean;
 };

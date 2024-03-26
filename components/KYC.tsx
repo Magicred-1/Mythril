@@ -16,7 +16,7 @@ const KYCComponent = () => {
 
   const launchWebSdk = (accessToken: string) => {
     let snsWebSdkInstance = snsWebSdk
-      .init(accessToken, () => {})
+      .init(accessToken, () => Promise.resolve("your_new_access_token"))
       .withConf({
         lang: "en",
         email: applicantEmail,

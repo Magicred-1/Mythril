@@ -60,51 +60,48 @@ const assurances: Assurance[] = [
 
 const page = () => {
   return (
-    <div
-      style={{ minHeight: "calc(100% - 83px)" }}
-      className="bg-backfum py-[89px] px-[104px] space-y-10 "
-    >
-      <div className="bg-backblueOpacity h-[281px] rounded-lg center">
-        <div className="font-bold text-[50px] text-[#2D8CF0E5]">
+    <div className="min-h-screen bg-backfum py-16 px-4 lg:px-20 xl:px-32 space-y-10">
+      <div className="bg-backblueOpacity h-72 lg:h-96 rounded-lg flex items-center justify-center">
+        <div className="font-bold text-4xl lg:text-6xl text-[#2D8CF0E5]">
           Browse our partners
         </div>
       </div>
 
-      <div className="center">
-        {labelButtons.map((label, i) => {
-          return (
+      <div className="flex justify-center">
+        <div className="flex flex-wrap justify-center lg:justify-start space-y-2 lg:space-y-0 lg:space-x-4 xl:space-x-8">
+          {labelButtons.map((label, i) => (
             <Button
-              className="px-[45px] rounded-full bg-textBlue font-light text-[20px]"
               key={i}
+              className="px-6 lg:px-8 rounded-full bg-textBlue font-light text-lg lg:text-xl"
             >
               {label}
             </Button>
-          );
-        })}
-      </div>
-      <div className="center">
-        <div style={{ width: "760px" }} className="grid grid-cols-3 gap-2">
-          {assurances.map((assurance, i) => {
-            return (
-              <div
-                key={i}
-                className="bg-[#2D8CF0E5] font-bold text-white text-[24px] px-[24px] py-[30px] rounded-xl flex flex-col justify-between relative"
-              >
-                <div className="absolute right-1 top-2 text-black bg-white rounded-full text-[10px] p-1">
-                  Starting at {assurance.price} $
-                </div>
-                <div className="center">{assurance.name}</div>
-                <div>
-                  <Image src={assurance.img} alt="imgAssurance" />
-                </div>
-                <div className="center">{assurance.country}</div>
-              </div>
-            );
-          })}
+          ))}
         </div>
       </div>
-      <div className="center">
-        <Button className="px-[45px] rounded-full bg-textBlue font-light text-[20px]">
+
+
+
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {assurances.map((assurance, i) => (
+          <div
+            key={i}
+            className="bg-[#2D8CF0E5] font-bold text-white text-lg lg:text-xl px-4 lg:px-6 py-6 rounded-xl flex flex-col items-center justify-between relative"
+          >
+            <div className="absolute top-2 right-2 bg-white text-black rounded-full text-xs lg:text-sm p-1">
+              Starting at ${assurance.price}
+            </div>
+            <div className="text-center">{assurance.name}</div>
+            <div className="mt-4">
+              <Image src={assurance.img} alt="imgAssurance" />
+            </div>
+            <div className="text-center">{assurance.country}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center">
+        <Button className="px-6 lg:px-8 rounded-full bg-textBlue font-light text-lg lg:text-xl">
           See more...
         </Button>
       </div>
