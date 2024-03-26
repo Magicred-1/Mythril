@@ -1,10 +1,9 @@
-import Image from "next/image";
+"use client";
+
 import React from "react";
-import firstImg from "@/lib/assets/logos/landingPage/3D_model_trust.png";
-import SecondtImg from "@/lib/assets/logos/landingPage/3d_model_transparent.png";
-import thirdImg from "@/lib/assets/logos/landingPage/3d_model_non_custodial.png";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Spline from "@splinetool/react-spline";
 
 const ContentLanding = () => {
   return (
@@ -41,13 +40,13 @@ const ContentLanding = () => {
           </Button>
         </div>
         <div className="md:w-1/2 mt-6 md:mt-0">
-          <Image src={firstImg} alt="boulimg" />
+          <Spline scene="https://prod.spline.design/VKhYwybJWZnWA2MH/scene.splinecode" />
         </div>
       </div>
 
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
         <div className="md:w-1/2 mt-6 md:mt-0">
-          <Image src={SecondtImg} alt="boulimg" />
+          <Spline scene="https://prod.spline.design/JoDNj7cGhoqwLLyP/scene.splinecode" />
         </div>
         <div className="md:w-1/2">
           <div className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
@@ -89,7 +88,7 @@ const ContentLanding = () => {
           </Button>
         </div>
         <div className="md:w-1/2 mt-6 md:mt-0">
-          <Image src={thirdImg} alt="boulimg" />
+          <Spline scene="https://prod.spline.design/S30XIk3bnzDk22gK/scene.splinecode" />
         </div>
       </div>
     </div>

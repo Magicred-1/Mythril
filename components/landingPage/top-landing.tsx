@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import boulImg from "@/lib/assets/logos/landingPage/3d_model_hero.png";
 import { Lexend } from "next/font/google";
+import Spline from '@splinetool/react-spline';
 
 export const lexend = Lexend({ subsets: ["latin"] });
 
@@ -48,7 +51,7 @@ const TopLanding = () => {
         </button>
       </div>
       <div className="mt-6 sm:mt-0 flex justify-center">
-        <Image src={boulImg} alt="boulimg" width={600} height={400} />
+        <Spline scene="https://prod.spline.design/XcBsfoS1dk-iZ3SD/scene.splinecode" />
       </div>
     </div>
   );
